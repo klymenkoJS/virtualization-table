@@ -1,4 +1,4 @@
-import { Box, IconButton, TextField, useTheme } from '@mui/material';
+import { Box, Grid, IconButton, TextField, useTheme } from '@mui/material';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { tokens } from '../../../theme/themeSettings';
@@ -10,80 +10,79 @@ const Form = ({ onSubmit, onClose, initialValues }) => {
     const colors = tokens(theme.palette.mode);
 
     return (
-        <Box
-            sx={{
-                backgroundColor: colors.primary[400],
-            }}
+        <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={checkoutSchema}
         >
-            <Formik
-                onSubmit={onSubmit}
-                initialValues={initialValues}
-                validationSchema={checkoutSchema}
-            >
-                {({
-                    values,
-                    errors,
-                    touched,
-                    handleBlur,
-                    handleChange,
-                    handleSubmit,
-                }) => (
-                    <Box
+            {({
+                values,
+                errors,
+                touched,
+                handleBlur,
+                handleChange,
+                handleSubmit,
+            }) => (
+                <form onSubmit={handleSubmit}>
+                    <Grid
+                        container
                         sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'start',
-                            gap: '20px',
                             backgroundColor: colors.primary[400],
-                            padding: '10px',
+                            alignItems: 'center',
+                            p: 2,
+                            gap: 2,
                         }}
                     >
-                        <IconButton size="small" onClick={onClose}>
-                            <CloseIcon fontSize="inherit" />
-                        </IconButton>
-                        <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            type="text"
-                            label="Name"
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            value={values.name}
-                            name="name"
-                            error={!!touched.name && !!errors.name}
-                            helperText={touched.name && errors.name}
-                        />
-                        <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            type="text"
-                            label="Age"
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            value={values.age}
-                            name="age"
-                            error={!!touched.age && !!errors.age}
-                            helperText={touched.age && errors.age}
-                        />
-                        <TextField
-                            id="outlined-basic"
-                            variant="outlined"
-                            type="text"
-                            label="City"
-                            onBlur={handleBlur}
-                            onChange={handleChange}
-                            value={values.city}
-                            name="city"
-                            error={!!touched.city && !!errors.city}
-                            helperText={touched.city && errors.city}
-                        />
-                        <IconButton size="small" onClick={handleSubmit}>
-                            <SaveIcon fontSize="large" />
-                        </IconButton>
-                    </Box>
-                )}
-            </Formik>
-        </Box>
+                        <Grid item order={{ xs: -1, sm: 0 }}>
+                            <IconButton size="small" onClick={onClose}>
+                                <CloseIcon fontSize="inherit" />
+                            </IconButton>
+                        </Grid>
+                        <Grid item xs={12} sm={true}>
+                            <TextField
+                                fullWidth
+                                label="Name"
+                                name="name"
+                                value={values.name}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.name && Boolean(errors.name)}
+                                helperText={touched.name && errors.name}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={true}>
+                            <TextField
+                                fullWidth
+                                label="Age"
+                                name="age"
+                                value={values.age}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.age && Boolean(errors.age)}
+                                helperText={touched.age && errors.age}
+                            />
+                        </Grid>
+                        <Grid item xs={12} sm={true}>
+                            <TextField
+                                fullWidth
+                                label="City"
+                                name="city"
+                                value={values.city}
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                error={touched.city && Boolean(errors.city)}
+                                helperText={touched.city && errors.city}
+                            />
+                        </Grid>
+                        <Grid item order={{ xs: -1, sm: 0 }}>
+                            <IconButton type="submit" size="small">
+                                <SaveIcon />
+                            </IconButton>
+                        </Grid>
+                    </Grid>
+                </form>
+            )}
+        </Formik>
     );
 };
 

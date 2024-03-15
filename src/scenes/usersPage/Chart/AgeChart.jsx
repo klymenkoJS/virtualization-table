@@ -12,7 +12,6 @@ const AgeChart = ({ users, dimensions }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    // notification states
     const [tooltipData, setTooltipData] = useState(null);
     const [tooltipTop, setTooltipTop] = useState(0);
     const [tooltipLeft, setTooltipLeft] = useState(0);
@@ -46,7 +45,7 @@ const AgeChart = ({ users, dimensions }) => {
             borderRadius="3px"
             color={colors.grey[100]}
         >
-            <svg width={width} height={height}>
+            <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`}>
                 <Group>
                     {ageData.map((d, i) => {
                         return (
@@ -63,9 +62,7 @@ const AgeChart = ({ users, dimensions }) => {
                                         ? '#ff930f'
                                         : 'rebeccapurple'
                                 }
-                                onMouseOver={(event) =>
-                                    handleMouseOver(event, d)
-                                }
+                                onMouseOver={(e) => handleMouseOver(e, d)}
                                 onMouseOut={() => setTooltipData(null)}
                             />
                         );
@@ -83,6 +80,7 @@ const AgeChart = ({ users, dimensions }) => {
                         stroke={colors.grey[100]}
                         tickStroke={colors.grey[100]}
                         tickLabelProps={tickLabelProps}
+                        tickFormat={(value) => `${value} years`}
                     />
                 </Group>
             </svg>

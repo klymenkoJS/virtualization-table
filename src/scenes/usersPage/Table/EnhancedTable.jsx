@@ -26,7 +26,7 @@ const EnhancedTable = ({
     const colors = tokens(theme.palette.mode);
 
     const columns = [
-        { id: FIELD.ID, label: 'ID', sortable: true },
+        { id: FIELD.ID, label: 'ID', sortable: true, hiddenOnMobile: true },
         { id: FIELD.NAME, label: 'Name', sortable: true },
         { id: FIELD.AGE, label: 'Age', sortable: true },
         { id: FIELD.CITY, label: 'City', sortable: true },
@@ -49,7 +49,7 @@ const EnhancedTable = ({
 
     return (
         <>
-            <TableContainer>
+            <TableContainer sx={{ backgroundColor: colors.primary[400] }}>
                 <Table stickyHeader aria-label="user table">
                     <TableHead>
                         <TableRow>
@@ -58,6 +58,7 @@ const EnhancedTable = ({
                                     key={column.id}
                                     colors={colors}
                                     sortable={column.sortable}
+                                    hiddenOnMobile={column.hiddenOnMobile}
                                     onClick={createSortHandler(column)}
                                 >
                                     {column.label}
@@ -76,7 +77,6 @@ const EnhancedTable = ({
                         height={350}
                         itemCount={filteredUsers.length}
                         itemSize={53}
-                        width="100%"
                         itemData={{
                             handleEditUser,
                             users: filteredUsers,
