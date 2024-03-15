@@ -1,13 +1,6 @@
 {
   "users": [
     {
-      "name": "Isabella",
-      "age": 74,
-      "id": "1",
-      "sortId": 1,
-      "city": "Los Angeles"
-    },
-    {
       "name": "Lucas",
       "age": 36,
       "id": "2",
@@ -90,13 +83,6 @@
       "id": "13",
       "sortId": 13,
       "city": "Dhaka"
-    },
-    {
-      "name": "Benjamin",
-      "age": 38,
-      "id": "14",
-      "sortId": 14,
-      "city": "Mumbai"
     },
     {
       "name": "Ethan",
@@ -482,13 +468,6 @@
       "id": "69",
       "sortId": 69,
       "city": "Kolkata"
-    },
-    {
-      "name": "Mason",
-      "age": 92,
-      "id": "70",
-      "sortId": 70,
-      "city": "Los Angeles"
     },
     {
       "name": "Isabella",
@@ -2122,13 +2101,6 @@
       "city": "Sao Paulo"
     },
     {
-      "name": "James",
-      "age": 90,
-      "id": "306",
-      "sortId": 306,
-      "city": "Los Angeles"
-    },
-    {
       "name": "Ethan",
       "age": 2,
       "id": "307",
@@ -2218,13 +2190,6 @@
       "id": "319",
       "sortId": 319,
       "city": "Cairo"
-    },
-    {
-      "name": "Mia",
-      "age": 2,
-      "id": "320",
-      "sortId": 320,
-      "city": "Beijing"
     },
     {
       "name": "Amelia",
@@ -4668,13 +4633,6 @@
       "id": "670",
       "sortId": 670,
       "city": "Dhaka"
-    },
-    {
-      "name": "Ava",
-      "age": 1,
-      "id": "671",
-      "sortId": 671,
-      "city": "Beijing"
     },
     {
       "name": "William",
