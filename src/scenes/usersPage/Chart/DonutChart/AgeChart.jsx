@@ -4,7 +4,7 @@ import { Bar } from '@visx/shape';
 import { AxisBottom, AxisLeft } from '@visx/axis';
 import { TooltipWithBounds } from '@visx/tooltip';
 import { useTheme, Box } from '@mui/material';
-import { tokens } from '../../../theme/themeSettings';
+import { tokens } from '../../../../theme/themeSettings';
 import { width, height, margin, rangeStep } from './const';
 import { groupByAgeRange, createScales } from './helpers';
 

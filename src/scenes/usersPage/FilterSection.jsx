@@ -10,7 +10,7 @@ import {
     useTheme,
     Grid,
 } from '@mui/material';
-import { FIELD } from './const';
+import { FIELD } from './Table/const';
 
 const FilterSection = ({
     search,

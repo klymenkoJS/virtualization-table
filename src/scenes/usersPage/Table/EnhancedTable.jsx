@@ -11,7 +11,7 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import RenderRow from './RenderRow';
 import { StyledTableCell } from './StyledTableElements';
-import { ORDER, FIELD } from '../const';
+import { ORDER, FIELD } from './const';
 
 const EnhancedTable = ({
     filteredUsers,

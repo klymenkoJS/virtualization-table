@@ -9,7 +9,7 @@ import ToolbarFilterButton from '../components/buttons/ToolbarFilterButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { usersAction } from '../../redux/actions/usersAction';
 import EnhancedTable from './Table/EnhancedTable';
-import { ORDER, FIELD, initialFormValues } from './const';
+import { ORDER, FIELD, initialFormValues } from './Table/const';
 
 const TableSection = () => {
     const [sortOrder, setSortOrder] = useState(ORDER.ASC); // DESC

@@ -5,7 +5,7 @@ import { CircularProgress } from '@mui/material';
 import { usersAction } from '../../redux/actions/usersAction';
 import TableSection from './TableSection';
 import { orderBy } from 'lodash';
-import { ORDER, FIELD } from './const';
+import { ORDER, FIELD } from './Table/const';
 import { Box, useTheme } from '@mui/material';
 import ChartSection from './ChartSection';
 import { tokens } from '../../theme/themeSettings';
