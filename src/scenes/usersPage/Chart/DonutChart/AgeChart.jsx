@@ -1,20 +1,24 @@
-import React, { useState, useMemo } from 'react';
+import { useMemo } from 'react';
 import { Group } from '@visx/group';
 import { Bar } from '@visx/shape';
 import { AxisBottom, AxisLeft } from '@visx/axis';
-import { TooltipWithBounds } from '@visx/tooltip';
-import { useTheme, Box } from '@mui/material';
+import { useTheme, Box, Typography } from '@mui/material';
 import { tokens } from '../../../../theme/themeSettings';
 import { width, height, margin, rangeStep } from './const';
 import { groupByAgeRange, createScales } from './helpers';
+import { TooltipWithBounds, useTooltip } from '@visx/tooltip';
 
 const AgeChart = ({ users, dimensions }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-
-    const [tooltipData, setTooltipData] = useState(null);
-    const [tooltipTop, setTooltipTop] = useState(0);
-    const [tooltipLeft, setTooltipLeft] = useState(0);
+    const {
+        tooltipOpen,
+        tooltipData,
+        tooltipTop = 0,
+        tooltipLeft = 0,
+        showTooltip,
+        hideTooltip,
+    } = useTooltip();
 
     const ageData = useMemo(() => groupByAgeRange(users, rangeStep), [users]);
     const { xScale, yScale } = useMemo(
@@ -25,11 +29,13 @@ const AgeChart = ({ users, dimensions }) => {
     xScale.rangeRound([margin.left, width - margin.right]);
     yScale.range([height - margin.bottom, margin.top]);
 
-    const handleMouseOver = (event, d) => {
-        const { top, left } = event.currentTarget.getBoundingClientRect();
-        setTooltipTop(top - event.currentTarget.clientTop);
-        setTooltipLeft(left + event.currentTarget.clientWidth / 2);
-        setTooltipData(d);
+    const handleMouseOver = (e, d) => {
+        const { top, left } = e.currentTarget.getBoundingClientRect();
+        showTooltip({
+            tooltipData: d,
+            tooltipTop: top - e.currentTarget.clientTop,
+            tooltipLeft: left + e.currentTarget.clientWidth / 2,
+        });
     };
 
     const tickLabelProps = () => ({
@@ -63,7 +69,7 @@ const AgeChart = ({ users, dimensions }) => {
                                         : 'rebeccapurple'
                                 }
                                 onMouseOver={(e) => handleMouseOver(e, d)}
-                                onMouseOut={() => setTooltipData(null)}
+                                onMouseLeave={hideTooltip}
                             />
                         );
                     })}
@@ -84,12 +90,12 @@ const AgeChart = ({ users, dimensions }) => {
                     />
                 </Group>
             </svg>
-            {tooltipData && (
+            {tooltipOpen && (
                 <TooltipWithBounds top={tooltipTop} left={tooltipLeft}>
-                    <div>
-                        <strong>Age Group: {tooltipData.age}</strong>
-                        <div>Number of Users: {tooltipData.count}</div>
-                    </div>
+                    <Typography fontWeight="bold">
+                        Age Group: {tooltipData?.age}
+                    </Typography>
+                    <Box>Number of Users: {tooltipData?.count}</Box>
                 </TooltipWithBounds>
             )}
         </Box>

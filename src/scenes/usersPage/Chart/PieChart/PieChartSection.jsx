@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Box } from '@mui/material';
 import PieChart from './PieChart';
 import chroma from 'chroma-js';
@@ -35,7 +35,7 @@ const PieChartSection = ({ users }) => {
                 margin: 'auto',
             }}
         >
-            <PieChart pieData={pieData} />
+            <PieChart pieData={pieData} totalCount={totalCount} />
         </Box>
     );
 };
