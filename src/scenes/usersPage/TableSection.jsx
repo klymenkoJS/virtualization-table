@@ -118,8 +118,6 @@ const TableSection = () => {
 
     const filteredUsers = getFilteredUsers();
 
-    console.log(filteredUsers);
-
     return (
         <>
             <ToolbarFilterButton
