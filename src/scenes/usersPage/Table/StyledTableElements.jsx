@@ -1,7 +1,10 @@
 import { TableCell } from '@mui/material';
 import { styled } from '@mui/system';
 
-const StyledTableCell = styled(TableCell)(
+const shouldForwardProp = (prop) =>
+    !['sortable', 'hiddenOnMobile'].includes(prop);
+
+const StyledTableCell = styled(TableCell, { shouldForwardProp })(
     ({ theme, sortable, colors, hiddenOnMobile }) => ({
         backgroundColor: colors.blueAccent[700],
         width: '20%',
@@ -17,14 +20,16 @@ const StyledTableCell = styled(TableCell)(
     })
 );
 
-const StyledBox = styled(TableCell)(({ colors, theme, hiddenOnMobile }) => ({
-    backgroundColor: colors.primary[400],
-    width: '25%',
-    ...(hiddenOnMobile && {
-        [theme.breakpoints.down('sm')]: {
-            display: 'none',
-        },
-    }),
-}));
+const StyledBox = styled(TableCell, { shouldForwardProp })(
+    ({ colors, theme, hiddenOnMobile }) => ({
+        backgroundColor: colors.primary[400],
+        width: '25%',
+        ...(hiddenOnMobile && {
+            [theme.breakpoints.down('sm')]: {
+                display: 'none',
+            },
+        }),
+    })
+);
 
 export { StyledTableCell, StyledBox };
