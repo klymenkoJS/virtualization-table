@@ -11,19 +11,21 @@ import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import RenderRow from './RenderRow';
 import { StyledTableCell } from './StyledTableElements';
-import { ORDER, FIELD } from './const';
+import { ORDER, FIELD, topbarHeight, chartHeight } from './const';
 
 const EnhancedTable = ({
     filteredUsers,
-    handleEditUser,
+    openEditForm,
     handleDelete,
     onSort,
     sortField,
     sortOrder,
     isEditing,
+    containerHeight,
 }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
+    const maxHeightContainer = containerHeight - topbarHeight - chartHeight;
 
     const columns = [
         { id: FIELD.ID, label: 'ID', sortable: true, hiddenOnMobile: true },
@@ -49,7 +51,12 @@ const EnhancedTable = ({
 
     return (
         <>
-            <TableContainer sx={{ backgroundColor: colors.primary[400] }}>
+            <TableContainer
+                sx={{
+                    backgroundColor: colors.primary[400],
+                    maxHeight: maxHeightContainer,
+                }}
+            >
                 <Table stickyHeader aria-label="user table">
                     <TableHead>
                         <TableRow>
@@ -74,11 +81,11 @@ const EnhancedTable = ({
                 </Table>
                 {filteredUsers.length > 0 && (
                     <List
-                        height={350}
+                        height={maxHeightContainer - 60}
                         itemCount={filteredUsers.length}
                         itemSize={53}
                         itemData={{
-                            handleEditUser,
+                            openEditForm,
                             users: filteredUsers,
                             handleDelete,
                             isEditing,

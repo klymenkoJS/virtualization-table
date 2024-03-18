@@ -4,11 +4,11 @@ import { Bar } from '@visx/shape';
 import { AxisBottom, AxisLeft } from '@visx/axis';
 import { useTheme, Box, Typography } from '@mui/material';
 import { tokens } from '../../../../theme/themeSettings';
-import { width, height, margin, rangeStep } from './const';
+import { width, height, margin, rangeStep, dimensions } from './const';
 import { groupByAgeRange, createScales } from './helpers';
 import { TooltipWithBounds, useTooltip } from '@visx/tooltip';
 
-const AgeChart = ({ users, dimensions }) => {
+const AgeChart = ({ users }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const {

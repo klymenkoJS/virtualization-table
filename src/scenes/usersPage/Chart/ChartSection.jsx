@@ -1,12 +1,10 @@
 import { useSelector } from 'react-redux';
-import AgeChart from './Chart/DonutChart/AgeChart';
-import { margin, width, height } from './Chart/DonutChart/const';
-import PieChartSection from './Chart/PieChart/PieChartSection';
+import AgeChart from './DonutChart/AgeChart';
+import PieChartSection from './PieChart/PieChartSection';
 import { Grid } from '@mui/material';
 
 const ChartSection = () => {
     const users = useSelector((state) => state.users.users);
-    const dimensions = { width, height, margin };
 
     return (
         <Grid container spacing={2}>
@@ -14,7 +12,7 @@ const ChartSection = () => {
                 <PieChartSection users={users} />
             </Grid>
             <Grid item xs={12} sm={8}>
-                <AgeChart users={users} dimensions={dimensions} />
+                <AgeChart users={users} />
             </Grid>
         </Grid>
     );

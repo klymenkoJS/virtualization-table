@@ -1,5 +1,5 @@
 import CloseIcon from '@mui/icons-material/Close';
-import { tokens } from '../../theme/themeSettings';
+import { tokens } from '../../../theme/themeSettings';
 import {
     FormControl,
     IconButton,
@@ -10,7 +10,7 @@ import {
     useTheme,
     Grid,
 } from '@mui/material';
-import { FIELD } from './Table/const';
+import { FIELD } from '../Table/const';
 
 const FilterSection = ({
     search,

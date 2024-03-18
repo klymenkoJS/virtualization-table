@@ -25,6 +25,7 @@
         "react-dom": "^18.2.0",
         "react-redux": "^9.1.0",
         "react-scripts": "5.0.1",
+        "react-use": "^17.5.0",
         "react-window": "^1.8.10",
         "redux": "^5.0.1",
         "web-vitals": "^2.1.4",
@@ -33,9 +34,7 @@
     "scripts": {
         "start": "react-scripts start",
         "start:json-server": "json-server ./json-server/db.json --port 8000",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
-        "eject": "react-scripts eject"
+        "build": "react-scripts build"
     },
     "eslintConfig": {
         "extends": [

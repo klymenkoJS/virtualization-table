@@ -8,7 +8,7 @@ import { StyledBox } from './StyledTableElements';
 const RenderRow = ({ index, style, data }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
-    const { handleEditUser, users, handleDelete, isEditing } = data;
+    const { openEditForm, users, handleDelete, isEditing } = data;
     const user = users[index];
 
     return (
@@ -28,7 +28,7 @@ const RenderRow = ({ index, style, data }) => {
                 <Box display="flex">
                     <ActionIconButton
                         Icon={EditIcon}
-                        onClick={() => handleEditUser(user)}
+                        onClick={() => openEditForm(user)}
                         disabled={isEditing}
                     />
                     <ActionIconButton

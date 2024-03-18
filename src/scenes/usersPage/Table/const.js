@@ -16,3 +16,6 @@ export const initialFormValues = {
     age: '',
     city: '',
 };
+
+export const topbarHeight = 68;
+export const chartHeight = 250;
